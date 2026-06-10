@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecturas de Carta Natal — Vox Astra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500&family=Great+Vibes&family=Skranji:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro:    #08101a;
+    --carbon:   #0e1828;
+    --fondo2:   #101e36;
+    --fondo3:   #0e2a44;
+    --acento:   #3ab0d0;
+    --acento2:  #6aaac8;
+    --ceniza:   #4a7aaa;
+    --hueso:    #b0c8e8;
+    --crema:    #d4e8f4;
+    --oro:      #c4a44a;
+    --sal:      #7a9ab8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--negro);
+    color: var(--hueso);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ESTRELLAS */
+  #starfield {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    position: relative;
+    background: radial-gradient(ellipse at 50% 40%, #0e2a44 0%, var(--negro) 70%);
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(58,176,208,0.1);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    animation: pulso 9s ease-in-out infinite;
+  }
+  .hero-circle.c2 {
+    animation-delay: 3s;
+    border-color: rgba(58,176,208,0.05);
+  }
+
+  @keyframes pulso {
+    0%,100% { transform: translate(-50%,-50%) scale(1); opacity:.5; }
+    50%      { transform: translate(-50%,-50%) scale(1.04); opacity:1; }
+  }
+
+  .hero-contenido { position: relative; z-index: 2; }
+
+  .marca-vox {
+    font-family: 'Skranji', sans-serif;
+    font-size: clamp(36px, 7vw, 72px);
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: var(--crema);
+    line-height: 1;
+    text-shadow: 0 0 80px rgba(58,176,208,0.2);
+  }
+
+  .marca-sub {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(10px, 1.4vw, 13px);
+    letter-spacing: 0.45em;
+    color: var(--oro);
+    text-transform: uppercase;
+    margin-top: 10px;
+    display: block;
+  }
+
+  .sep-fino {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, rgba(58,176,208,0.4), transparent);
+    margin: 36px auto;
+  }
+
+  .hero-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5.5vw, 62px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--crema);
+    margin-bottom: 20px;
+  }
+  .hero-titulo em { font-style: italic; color: var(--oro); }
+
+  .hero-sub {
+    font-size: clamp(15px, 2vw, 19px);
+    font-style: italic;
+    color: var(--sal);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* todas las secciones sobre el starfield */
+  section, .umbral-wrapper, .cruce, .obras-wrapper, .sobre-mi, .para-quien {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* INTRO */
+  .intro {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 100px 24px;
+    text-align: center;
+  }
+  .intro p {
+    font-size: clamp(17px, 2vw, 21px);
+    color: var(--sal);
+    line-height: 1.85;
+    margin-bottom: 28px;
+  }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro strong { font-weight: 600; color: var(--crema); }
+  .intro em { color: var(--acento); font-style: italic; }
+
+  /* SEPARADOR CON SIMBOLO */
+  .sep-sym {
+    text-align: center;
+    padding: 0 0 70px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* SESION CERO */
+  .umbral-wrapper {
+    padding: 0 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .umbral-eyebrow {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .umbral-eyebrow span {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--ceniza);
+    text-transform: uppercase;
+  }
+
+  .umbral-card {
+    position: relative;
+    border: 1px solid rgba(58,176,208,0.2);
+    background: linear-gradient(160deg, #0a1420 0%, #0e1e34 60%, #0a1220 100%);
+    overflow: hidden;
+  }
+
+  .umbral-acento {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, var(--acento), transparent);
+    opacity: 0.5;
+  }
+
+  .umbral-glow {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(58,176,208,0.04) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .umbral-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    position: relative;
+    z-index: 1;
+  }
+
+  .umbral-izq {
+    padding: 70px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(58,176,208,0.1);
+  }
+
+  .umbral-cero {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--acento);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0.75;
+  }
+
+  .umbral-titulo {
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--crema);
+  }
+  .umbral-titulo em { font-style: italic; color: var(--acento); }
+
+  .umbral-subtitulo {
+    margin-top: 12px;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(58,176,208,0.55);
+    line-height: 1.5;
+  }
+
+  .umbral-der {
+    padding: 70px 50px 70px 44px;
+  }
+
+  .umbral-desc {
+    font-size: clamp(16px, 1.7vw, 18px);
+    color: var(--sal);
+    line-height: 1.85;
+    margin-bottom: 28px;
+  }
+  .umbral-desc strong { color: var(--crema); font-weight: 600; }
+
+  .umbral-nota {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 22px;
+    border: 1px solid rgba(58,176,208,0.14);
+    margin-bottom: 36px;
+  }
+  .umbral-nota-ico { font-size: 16px; opacity: 0.4; flex-shrink: 0; margin-top: 3px; }
+  .umbral-nota p {
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(106,170,200,0.7);
+    line-height: 1.65;
+  }
+  .umbral-nota strong { font-style: normal; color: var(--sal); font-weight: 400; }
+
+  .etiq-elem {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ceniza);
+    margin-bottom: 14px;
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    padding: 5px 14px;
+    border: 1px solid;
+    color: var(--sal);
+  }
+  .tm { border-color: rgba(58,176,208,0.28); }
+  .tn { border-color: rgba(80,50,120,0.5); }
+  .ta { border-color: rgba(58,176,208,0.2); }
+  .tr { border-color: rgba(180,80,80,0.3); }
+
+  /* CRUCE */
+  .cruce {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .cruce-linea {
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(196,164,74,0.3));
+  }
+  .cruce-linea.der {
+    background: linear-gradient(to left, transparent, rgba(196,164,74,0.3));
+  }
+  .cruce-texto { text-align: center; flex-shrink: 0; max-width: 400px; }
+  .cruce-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 0.4em;
+    color: var(--ceniza); text-transform: uppercase;
+    display: block; margin-bottom: 14px;
+  }
+  .cruce-frase {
+    font-size: clamp(19px, 2.6vw, 27px);
+    font-style: italic; font-weight: 300;
+    color: var(--crema); line-height: 1.4;
+  }
+  .cruce-sub {
+    display: block; margin-top: 14px;
+    font-size: 15px; color: var(--ceniza);
+    font-style: italic; line-height: 1.6;
+  }
+
+  /* OBRAS */
+  .obras-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 120px;
+  }
+
+  .obras-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .obras-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px; letter-spacing: 0.4em;
+    color: var(--ceniza); text-transform: uppercase;
+    display: block; margin-bottom: 16px;
+  }
+  .obras-titulo {
+    font-size: clamp(26px, 3.8vw, 42px);
+    font-weight: 300; color: var(--crema); line-height: 1.2;
+  }
+  .obras-titulo em { font-style: italic; color: var(--oro); }
+  .obras-nota {
+    margin-top: 18px;
+    font-style: italic; font-size: 16px;
+    color: var(--ceniza); line-height: 1.65;
+  }
+  .obras-nota strong { color: var(--sal); font-weight: 400; font-style: normal; }
+
+  .fase-card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-bottom: 2px;
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: border-color 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .fase-card:hover { border-color: rgba(196,164,74,0.18); }
+
+  .fase-izq {
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .fase-num-grande {
+    font-size: 110px; font-weight: 300;
+    line-height: 1; opacity: 0.04;
+    position: absolute; bottom: 16px; left: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    pointer-events: none;
+  }
+
+  .fase-etiq {
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 0.4em;
+    text-transform: uppercase; color: var(--ceniza);
+    margin-bottom: 12px;
+  }
+
+  .fase-nombre {
+    font-size: clamp(26px, 3.2vw, 40px);
+    font-weight: 300; line-height: 1.1; color: var(--crema);
+  }
+  .fase-nombre em { font-style: italic; }
+  .fase-sub { font-style: italic; font-size: 14px; margin-top: 8px; line-height: 1.4; }
+
+  .fase-der {
+    padding: 60px 50px 60px 40px;
+    border-left: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .fase-desc {
+    font-size: clamp(16px, 1.7vw, 18px);
+    color: var(--sal); line-height: 1.85;
+    margin-bottom: 28px;
+  }
+  .fase-desc strong { color: var(--crema); font-weight: 600; }
+
+  .c-nigredo {
+    background: linear-gradient(135deg, #0a0814 0%, #140e22 100%);
+  }
+  .c-nigredo .fase-nombre em { color: #8a6ab8; }
+  .c-nigredo .fase-sub { color: #6a4a98; }
+  .c-nigredo .fase-num-grande { color: #3d2a52; }
+
+  .c-albedo {
+    background: linear-gradient(135deg, #0a1020 0%, #0e1a34 100%);
+  }
+  .c-albedo .fase-nombre em { color: var(--acento2); }
+  .c-albedo .fase-sub { color: var(--ceniza); }
+  .c-albedo .fase-num-grande { color: var(--fondo3); }
+
+  .c-rubedo {
+    background: linear-gradient(135deg, #150c0c 0%, #221010 100%);
+  }
+  .c-rubedo .fase-nombre em { color: #c87070; }
+  .c-rubedo .fase-sub { color: #8a4040; }
+  .c-rubedo .fase-num-grande { color: #4a1818; }
+
+  /* CITA */
+  .cita-bloque {
+    max-width: 700px; margin: 0 auto;
+    padding: 80px 24px 100px; text-align: center;
+    position: relative; z-index: 1;
+  }
+  .cita-texto {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--crema); line-height: 1.5;
+    margin-bottom: 24px;
+  }
+  .cita-fuente {
+    font-family: 'Cinzel', serif;
+    font-size: 10px; letter-spacing: 0.3em;
+    color: var(--ceniza); text-transform: uppercase;
+  }
+
+  /* COMO FUNCIONA */
+  .como {
+    padding: 100px 24px;
+    background: rgba(14,24,40,0.85);
+    border-top: 1px solid rgba(58,176,208,0.07);
+    border-bottom: 1px solid rgba(58,176,208,0.07);
+    position: relative; z-index: 1;
+    backdrop-filter: blur(2px);
+  }
+  .como-inner { max-width: 900px; margin: 0 auto; }
+  .sec-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 10px; letter-spacing: 0.4em;
+    color: var(--ceniza); text-transform: uppercase;
+    text-align: center; margin-bottom: 64px;
+  }
+  .como-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 48px; margin-bottom: 72px;
+  }
+  .como-item { text-align: center; }
+  .como-ico { font-size: 26px; margin-bottom: 16px; display: block; opacity: 0.5; }
+  .como-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 11px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--oro); margin-bottom: 12px;
+  }
+  .como-txt { font-size: 16px; color: var(--ceniza); line-height: 1.7; }
+
+  .nota-recorrido {
+    border: 1px solid rgba(196,164,74,0.14);
+    padding: 40px; text-align: center;
+    max-width: 600px; margin: 0 auto;
+  }
+  .nota-recorrido p {
+    font-style: italic; font-size: 18px;
+    color: var(--sal); line-height: 1.7;
+  }
+  .nota-recorrido strong { color: var(--crema); font-weight: 600; font-style: normal; }
+
+  /* SOBRE MI */
+  .sobre-mi {
+    padding: 100px 24px;
+    max-width: 820px; margin: 0 auto;
+  }
+  .sobre-mi-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+  .sobre-mi-linea { flex: 1; height: 1px; background: rgba(58,176,208,0.1); }
+  .sobre-mi-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px; letter-spacing: 0.4em;
+    color: var(--ceniza); text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .sobre-mi-firma {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(36px, 5vw, 52px);
+    color: var(--oro);
+    line-height: 1;
+    margin-bottom: 36px;
+  }
+
+  .sobre-mi p {
+    font-size: clamp(16px, 1.8vw, 19px);
+    color: var(--sal);
+    line-height: 1.9;
+    margin-bottom: 24px;
+  }
+  .sobre-mi p:last-child { margin-bottom: 0; }
+  .sobre-mi strong { color: var(--crema); font-weight: 600; }
+  .sobre-mi em { color: var(--acento); font-style: italic; }
+
+  /* PARA QUIEN */
+  .para-quien {
+    padding: 80px 24px 100px;
+    max-width: 800px; margin: 0 auto;
+  }
+  .para-quien ul { list-style: none; margin-top: 40px; }
+  .para-quien li {
+    padding: 18px 0 18px 28px;
+    border-bottom: 1px solid rgba(58,176,208,0.06);
+    font-size: clamp(16px, 1.9vw, 19px);
+    color: var(--sal); line-height: 1.65;
+    position: relative;
+  }
+  .para-quien li::before {
+    content: '-';
+    position: absolute; left: 0;
+    color: var(--oro);
+  }
+
+  /* CTA */
+  .cta-seccion {
+    padding: 120px 24px; text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, #1a2a3a 0%, var(--negro) 60%);
+    position: relative; z-index: 1;
+    overflow: hidden;
+  }
+  .cta-titulo {
+    font-size: clamp(30px, 5vw, 54px);
+    font-weight: 300; color: var(--crema);
+    line-height: 1.2; margin-bottom: 22px;
+  }
+  .cta-sub {
+    font-style: italic; font-size: 18px;
+    color: var(--sal);
+    max-width: 480px; margin: 0 auto 52px;
+    line-height: 1.6;
+  }
+  .cta-boton {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px; letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--negro); background: var(--oro);
+    padding: 18px 48px;
+    text-decoration: none;
+    transition: background 0.3s;
+    cursor: pointer; border: none;
+  }
+  .cta-boton:hover { background: var(--crema); }
+
+  /* FOOTER */
+  footer {
+    padding: 48px 24px; text-align: center;
+    border-top: 1px solid rgba(58,176,208,0.07);
+    position: relative; z-index: 1;
+  }
+  .footer-marca {
+    font-family: 'Skranji', sans-serif;
+    font-size: 18px; letter-spacing: 0.2em;
+    color: var(--ceniza);
+  }
+
+  /* RESPONSIVE */
+  @media(max-width:700px){
+    .umbral-inner, .fase-card { grid-template-columns: 1fr; }
+    .umbral-izq { border-right: none; border-bottom: 1px solid rgba(58,176,208,0.1); padding: 44px 28px 32px; }
+    .umbral-der { padding: 36px 28px 48px; }
+    .fase-izq { padding: 40px 28px 20px; }
+    .fase-num-grande { display: none; }
+    .fase-der { border-left: none; border-top: 1px solid rgba(255,255,255,0.04); padding: 36px 28px; }
+    .cruce { flex-direction: column; padding: 60px 24px; gap: 16px; }
+    .cruce-linea { display: none; }
+    .sobre-mi-header { flex-direction: column; text-align: center; gap: 12px; }
+    .sobre-mi-linea { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CAMPO DE ESTRELLAS -->
+<canvas id="starfield"></canvas>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-circle" style="width:500px;height:500px;"></div>
+  <div class="hero-circle c2" style="width:800px;height:800px;"></div>
+
+  <!-- rueda zodiacal sutil fondo -->
+  <svg style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.03;pointer-events:none;" width="560" height="560" viewBox="0 0 560 560">
+    <circle cx="280" cy="280" r="240" stroke="#3ab0d0" stroke-width="1" fill="none"/>
+    <circle cx="280" cy="280" r="180" stroke="#3ab0d0" stroke-width="0.5" fill="none"/>
+    <circle cx="280" cy="280" r="8" stroke="#3ab0d0" stroke-width="1" fill="none"/>
+    <line x1="280" y1="40" x2="280" y2="520" stroke="#3ab0d0" stroke-width="0.5"/>
+    <line x1="40" y1="280" x2="520" y2="280" stroke="#3ab0d0" stroke-width="0.5"/>
+    <line x1="110" y1="110" x2="450" y2="450" stroke="#3ab0d0" stroke-width="0.5"/>
+    <line x1="450" y1="110" x2="110" y2="450" stroke="#3ab0d0" stroke-width="0.5"/>
+    <line x1="280" y1="40" x2="280" y2="100" stroke="#3ab0d0" stroke-width="1.5"/>
+    <line x1="280" y1="460" x2="280" y2="520" stroke="#3ab0d0" stroke-width="1.5"/>
+    <line x1="40" y1="280" x2="100" y2="280" stroke="#3ab0d0" stroke-width="1.5"/>
+    <line x1="460" y1="280" x2="520" y2="280" stroke="#3ab0d0" stroke-width="1.5"/>
+  </svg>
+
+  <div class="hero-contenido">
+    <div class="marca-vox">VOX ASTRA</div>
+    <span class="marca-sub">lecturas de carta natal</span>
+    <div class="sep-fino"></div>
+    <h1 class="hero-titulo">La vida como<br><em>obra alquímica</em></h1>
+    <p class="hero-sub">La propuesta de Vox Astra para hacer alquimia astrológica con el mapa natal, a través de las fases de la Gran Obra, desde el primer encuentro con tu cielo hasta la plena encarnación del ser.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <p>La alquimia no fue solo una proto-química. Fue <strong>un método</strong>. Sus tres grandes obras describen el camino que todo ser humano recorre cuando decide asumir su vida, asumir su espíritu.</p>
+  <p>Estas lecturas usan ese método para guiar el encuentro con tu carta natal. No como un manual de identidad, sino como <strong>un espejo que cambia según el ángulo desde el que te aproximás</strong>.</p>
+  <p>Podés comenzar por cualquier punto o recorrer el camino completo, porque <em>el cielo natal no se agota</em>.</p>
+</section>
+
+<!-- sep Luna -->
+<div class="sep-sym">
+  <svg width="60" height="60" viewBox="0 0 60 60" style="opacity:0.2;">
+    <path d="M38,30 A14,14 0 1,1 38,30.001 A9,9 0 1,0 38,30Z" stroke="#3ab0d0" stroke-width="1" fill="none"/>
+    <circle cx="30" cy="30" r="26" stroke="#3ab0d0" stroke-width="0.5" fill="none"/>
+  </svg>
+</div>
+
+<!-- SESION CERO -->
+<div class="umbral-wrapper">
+  <div class="umbral-eyebrow">
+    <span>El umbral - por aquí se empieza</span>
+  </div>
+
+  <div class="umbral-card">
+    <div class="umbral-acento"></div>
+    <div class="umbral-glow"></div>
+    <div class="umbral-inner">
+      <div class="umbral-izq">
+        <div>
+          <p class="umbral-cero">Sesión Cero</p>
+          <h2 class="umbral-titulo">Viaje al<br><em>Sí Mismo</em></h2>
+          <p class="umbral-subtitulo">El primer encuentro con tu carta natal</p>
+        </div>
+        <!-- simbolo Mercurio -->
+        <svg style="opacity:0.15;margin-top:32px;" width="38" height="52" viewBox="0 0 38 52">
+          <circle cx="19" cy="16" r="11" stroke="#3ab0d0" stroke-width="1.2" fill="none"/>
+          <line x1="19" y1="27" x2="19" y2="42" stroke="#3ab0d0" stroke-width="1.2"/>
+          <line x1="11" y1="35" x2="27" y2="35" stroke="#3ab0d0" stroke-width="1.2"/>
+          <line x1="14" y1="42" x2="24" y2="42" stroke="#3ab0d0" stroke-width="1.2"/>
+          <path d="M8,11 A11,11 0 0,1 30,11" stroke="#3ab0d0" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="umbral-der">
+        <p class="umbral-desc">Antes de descender a la sombra o ascender al propósito, es necesario <strong>habitar el territorio</strong>: saber quiénes son sus habitantes principales, reconocer el lenguaje en que está escrito el cielo que te tocó.</p>
+        <p class="umbral-desc">El eje <strong>Sol, Luna y Ascendente</strong> forma el corazón de esta sesión. El Sol como conciencia que quiere desplegarse, la Luna como cuerpo emocional y memoria encarnada, el Ascendente como el modo en que te volvés visible al mundo. A este núcleo se suman el planeta regente de la carta, los planetas personales, los aspectos principales y el balance energético.</p>
+        <p class="umbral-desc">Es una sesión de orientación y reconocimiento, <strong>para quienes se acercan a su carta natal por primera vez</strong>, o para quien quiere releerla con ojos frescos.</p>
+
+        <div class="umbral-nota">
+          <span class="umbral-nota-ico">◯</span>
+          <p>Esta es la <strong>entrada recomendada</strong> para quienes nunca tuvieron una lectura de carta natal. Si ya tenés experiencia con tu carta, podés comenzar directamente por cualquiera de las tres obras.</p>
+        </div>
+
+        <div class="etiq-elem">Énfasis astrológico</div>
+        <div class="tags">
+          <span class="tag tm">Sol · Luna · Ascendente</span>
+          <span class="tag tm">Planeta regente de la carta</span>
+          <span class="tag tm">Planetas personales</span>
+          <span class="tag tm">Aspectos principales</span>
+          <span class="tag tm">Balance energético</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CRUCE -->
+<div class="cruce">
+  <div class="cruce-linea"></div>
+  <div class="cruce-texto">
+    <span class="cruce-eyebrow">La Gran Obra comienza aquí</span>
+    <p class="cruce-frase">Nigredo, Albedo, Rubedo.<br>Las tres fases de la transformación.</p>
+    <span class="cruce-sub">Cada obra es autónoma. Juntas constituyen un recorrido completo de individuación.</span>
+  </div>
+  <div class="cruce-linea der"></div>
+</div>
+
+<!-- TRES OBRAS -->
+<section class="obras-wrapper">
+  <div class="obras-header">
+    <span class="obras-eyebrow">Las tres obras alquímicas</span>
+    <h2 class="obras-titulo">La <em>Gran Obra</em></h2>
+    <p class="obras-nota">Quienes ya tienen experiencia con su carta natal pueden comenzar por <strong>Nigredo</strong> o <strong>Albedo</strong> directamente, según el momento que estén atravesando.</p>
+  </div>
+
+  <!-- NIGREDO -->
+  <div class="fase-card c-nigredo">
+    <div class="fase-izq">
+      <div>
+        <p class="fase-etiq">Obra · I</p>
+        <h2 class="fase-nombre"><em>Nigredo</em><br>Obra al Negro</h2>
+        <p class="fase-sub">El descenso a la materia prima</p>
+      </div>
+      <!-- simbolo Saturno -->
+      <svg style="opacity:0.18;margin-top:24px;" width="34" height="44" viewBox="0 0 34 44">
+        <line x1="17" y1="2" x2="17" y2="38" stroke="#8a6ab8" stroke-width="1.3"/>
+        <line x1="9" y1="20" x2="25" y2="20" stroke="#8a6ab8" stroke-width="1.3"/>
+        <path d="M17,38 Q7,38 7,28 Q7,20 17,20" stroke="#8a6ab8" stroke-width="1.3" fill="none"/>
+      </svg>
+      <span class="fase-num-grande">I</span>
+    </div>
+    <div class="fase-der">
+      <p class="fase-desc">En alquimia, el Nigredo es la putrefacción necesaria: lo que debe disolverse antes de poder ser transformado. No es destrucción, es la <strong>precondición de toda obra genuina</strong>.</p>
+      <p class="fase-desc">Trabajamos con las partes del cielo natal que no piden luz, sino contacto. <strong>Saturno</strong> habla de carencias y miedos, de los límites que también son forma. <strong>Plutón y Quirón</strong> traen las heridas que reorganizan la psique. Los <strong>Nodos</strong> revelan los patrones del alma: aquellos a los que tiende por inercia, que necesita honrar antes de soltar. La <strong>Luna Dracónica</strong> muestra lo que el ser trae antes de individuarse. <strong>Lilith</strong> señala lo que fue reprimido o exiliado. Las <strong>casas de agua</strong> - IV, VIII y XII - son los espacios donde la psique guarda sus secretos.</p>
+      <p class="fase-desc">No se trabaja la sombra para superarla. Se trabaja <strong>para incluirla</strong>.</p>
+      <div class="etiq-elem">Énfasis astrológico</div>
+      <div class="tags">
+        <span class="tag tn">Saturno (carencias, miedos)</span>
+        <span class="tag tn">Plutón · Quirón (heridas)</span>
+        <span class="tag tn">Luna Dracónica</span>
+        <span class="tag tn">Lilith</span>
+        <span class="tag tn">Nodo Sur (patrones del alma)</span>
+        <span class="tag tn">Casas IV · VIII · XII</span>
+        <span class="tag tn">Aspectos tensos</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- sep entre obras -->
+  <div style="display:flex;align-items:center;gap:20px;padding:20px 0;opacity:0.15;">
+    <div style="flex:1;height:1px;background:rgba(58,176,208,0.3);"></div>
+    <svg width="28" height="28" viewBox="0 0 28 28">
+      <circle cx="14" cy="14" r="10" stroke="#3ab0d0" stroke-width="0.8" fill="none"/>
+      <circle cx="14" cy="14" r="3" stroke="#3ab0d0" stroke-width="0.8" fill="none"/>
+    </svg>
+    <div style="flex:1;height:1px;background:rgba(58,176,208,0.3);"></div>
+  </div>
+
+  <!-- ALBEDO -->
+  <div class="fase-card c-albedo">
+    <div class="fase-izq">
+      <div>
+        <p class="fase-etiq">Obra · II</p>
+        <h2 class="fase-nombre"><em>Albedo</em><br>Obra al Blanco</h2>
+        <p class="fase-sub">La purificación - la primavera del ser</p>
+      </div>
+      <!-- simbolo Jupiter -->
+      <svg style="opacity:0.18;margin-top:24px;" width="36" height="38" viewBox="0 0 36 38">
+        <line x1="18" y1="4" x2="18" y2="34" stroke="#6aaac8" stroke-width="1.3"/>
+        <line x1="6" y1="18" x2="30" y2="18" stroke="#6aaac8" stroke-width="1.3"/>
+        <path d="M18,4 Q6,4 6,14 Q6,24 18,24" stroke="#6aaac8" stroke-width="1.3" fill="none"/>
+      </svg>
+      <span class="fase-num-grande">II</span>
+    </div>
+    <div class="fase-der">
+      <p class="fase-desc">Tras el descenso, la clarificación. El Albedo es la lavatio: el lavado que separa lo esencial de lo accidental, lo que sos de lo que te fue impuesto. <strong>Hacerse un alma</strong>. La luna que aparece después de la oscuridad, no como su negación sino como su fruto.</p>
+      <p class="fase-desc">El Ascendente, el Sol y la Luna reaparecen aquí, pero ya no como personajes de una historia individual: ahora se leen <strong>desde el propósito</strong>. <strong>Júpiter</strong> aporta la expansión natural del ser, el sentido de abundancia que no necesita justificarse. El <strong>Medio Cielo</strong> y las <strong>casas de Dharma</strong> revelan la vocación pública y el camino del alma: casa I, casa V, casa IX. Los planetas transpersonales se leen como llamados generacionales, el modo en que una vida singular se inserta en algo <strong>más vasto que ella misma</strong>.</p>
+      <div class="etiq-elem">Énfasis astrológico</div>
+      <div class="tags">
+        <span class="tag ta">Júpiter</span>
+        <span class="tag ta">Urano · Neptuno</span>
+        <span class="tag ta">Ascendente · Sol · Luna (propósito)</span>
+        <span class="tag ta">Medio Cielo</span>
+        <span class="tag ta">Casas de Dharma (I, V, IX)</span>
+        <span class="tag ta">Nodo Norte</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- sep entre obras -->
+  <div style="display:flex;align-items:center;gap:20px;padding:20px 0;opacity:0.15;">
+    <div style="flex:1;height:1px;background:rgba(196,164,74,0.3);"></div>
+    <svg width="28" height="28" viewBox="0 0 28 28">
+      <circle cx="14" cy="10" r="8" stroke="#c4a44a" stroke-width="0.8" fill="none"/>
+      <line x1="14" y1="18" x2="14" y2="26" stroke="#c4a44a" stroke-width="0.8"/>
+      <line x1="9" y1="23" x2="19" y2="23" stroke="#c4a44a" stroke-width="0.8"/>
+    </svg>
+    <div style="flex:1;height:1px;background:rgba(196,164,74,0.3);"></div>
+  </div>
+
+  <!-- RUBEDO -->
+  <div class="fase-card c-rubedo">
+    <div class="fase-izq">
+      <div>
+        <p class="fase-etiq">Obra · III</p>
+        <h2 class="fase-nombre"><em>Rubedo</em><br>Obra al Rojo</h2>
+        <p class="fase-sub">La encarnación - el cuerpo del alma</p>
+      </div>
+      <!-- simbolo Sol -->
+      <svg style="opacity:0.18;margin-top:24px;" width="38" height="38" viewBox="0 0 38 38">
+        <circle cx="19" cy="19" r="13" stroke="#c87070" stroke-width="1.3" fill="none"/>
+        <circle cx="19" cy="19" r="4" stroke="#c87070" stroke-width="1.3" fill="none"/>
+        <line x1="19" y1="2" x2="19" y2="7" stroke="#c87070" stroke-width="1.3"/>
+        <line x1="19" y1="31" x2="19" y2="36" stroke="#c87070" stroke-width="1.3"/>
+        <line x1="2" y1="19" x2="7" y2="19" stroke="#c87070" stroke-width="1.3"/>
+        <line x1="31" y1="19" x2="36" y2="19" stroke="#c87070" stroke-width="1.3"/>
+      </svg>
+      <span class="fase-num-grande">III</span>
+    </div>
+    <div class="fase-der">
+      <p class="fase-desc">El Rubedo es la coniunctio: la unión de los opuestos que toda la obra ha estado preparando. Nigredo disolvió, Albedo purificó, <strong>Rubedo encarna</strong>. La sal filosófica: espíritu hecho materia, conciencia que ya no contempla su vida sino que la habita plenamente.</p>
+      <p class="fase-desc"><strong>Venus y Marte</strong> se leen en su dimensión erótica más amplia: no solo como amor y acción, sino como el pulso del deseo que organiza una vida creativa. El eje <strong>Casa II y Casa VIII</strong> revela la relación con el valor propio, los recursos y el intercambio profundo. <strong>Saturno</strong> y el <strong>Sol</strong> aparecen como principios de encarnación: la estructura que da forma al espíritu, el fuego que lo anima. La <strong>Cruz de Encarnación</strong> - los cuatro ángulos de la carta - nombra raíz, vocación, relación y presencia en el mundo. <strong>Quirón</strong> reaparece aquí, ya no como herida sino como <strong>don destilado de la herida</strong>.</p>
+      <p class="fase-desc">Esta lectura no descubre nada nuevo. <strong>Confirma lo que el alma ya sabe</strong>, en el cuerpo, en el tiempo, en lo concreto.</p>
+      <div class="etiq-elem">Énfasis astrológico</div>
+      <div class="tags">
+        <span class="tag tr">Venus · Marte (Eros)</span>
+        <span class="tag tr">Sol · Saturno (encarnación)</span>
+        <span class="tag tr">Casa II · Casa VIII</span>
+        <span class="tag tr">Cruz de Encarnación (4 ángulos)</span>
+        <span class="tag tr">Quirón como don</span>
+        <span class="tag tr">Nodo Norte - síntesis</span>
+        <span class="tag tr">Cuerpo y materialización</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITA -->
+<section class="cita-bloque">
+  <svg style="opacity:0.15;display:block;margin:0 auto 32px;" width="52" height="52" viewBox="0 0 52 52">
+    <circle cx="26" cy="20" r="13" stroke="#c4a44a" stroke-width="1.2" fill="none"/>
+    <line x1="26" y1="33" x2="26" y2="46" stroke="#c4a44a" stroke-width="1.2"/>
+    <line x1="18" y1="40" x2="34" y2="40" stroke="#c4a44a" stroke-width="1.2"/>
+  </svg>
+  <p class="cita-texto">Visita el interior de la tierra, y rectificando, encontrarás la piedra oculta.</p>
+  <p class="cita-fuente">V.I.T.R.I.O.L. · Basil Valentine</p>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="como">
+  <div class="como-inner">
+    <p class="sec-titulo">Cómo funciona el recorrido</p>
+    <div class="como-grid">
+      <div class="como-item">
+        <span class="como-ico">◯</span>
+        <p class="como-nom">Formato</p>
+        <p class="como-txt">Sesiones individuales por videollamada. Cada lectura dura entre 75 y 90 minutos.</p>
+      </div>
+      <div class="como-item">
+        <span class="como-ico">◈</span>
+        <p class="como-nom">Orden</p>
+        <p class="como-txt">Se recomienda comenzar por la Sesión Cero. Quienes ya conocen su carta pueden entrar directamente por cualquiera de las obras.</p>
+      </div>
+      <div class="como-item">
+        <span class="como-ico">◉</span>
+        <p class="como-nom">Preparación</p>
+        <p class="como-txt">Solo necesitás tu fecha, lugar y hora de nacimiento. Recibirás una guía de preparación antes de cada sesión.</p>
+      </div>
+      <div class="como-item">
+        <span class="como-ico">◇</span>
+        <p class="como-nom">Registro</p>
+        <p class="como-txt">Cada sesión queda grabada y disponible para vos. Algunas revelaciones necesitan ser escuchadas más de una vez.</p>
+      </div>
+    </div>
+    <div class="nota-recorrido">
+      <p>Las cuatro sesiones pueden tomarse de forma <strong>independiente</strong> o como un <strong>recorrido completo</strong>. Cada una es autónoma, pero juntas constituyen un acompañamiento profundo del proceso de individuación.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MI -->
+<section class="sobre-mi">
+  <div class="sobre-mi-header">
+    <div class="sobre-mi-linea"></div>
+    <span class="sobre-mi-eyebrow">Sobre mí</span>
+    <div class="sobre-mi-linea"></div>
+  </div>
+
+  <div class="sobre-mi-firma">Vox</div>
+
+  <p>Mi camino comenzó donde comienzan muchos: en el dolor. Una herida profunda que se expresaba en síntomas físicos y psicológicos me llevó a buscar, durante años, algo que la mayoría de los métodos no alcanzaba a tocar.</p>
+
+  <p>A los 19 años, un viaje de estudios a India en un momento en que estaba <strong>profundamente deprimida</strong> cambió el eje de mi vida. Fue allí donde comprendí que en el interior existe un lugar de presencia que ninguna oscuridad puede apagar. Desde ese momento empezó un trabajo de recuperación que sostengo hace más de nueve años.</p>
+
+  <p>Ese camino me llevó por el <strong>Ayurveda, el Advaita Vedanta, el Yoga, el Tarot</strong> y la obra de Jung, hasta llegar a la Astrología, donde finalmente encontré el lenguaje que unificaba todo lo que había aprendido. En paralelo, la formación en <strong>Alquimia, Sufismo, Somática y Chamanismo</strong> fue integrando al cuerpo en cada proceso, porque sin el cuerpo no hay verdadera transformación.</p>
+
+  <p>Vox Astra nació en 2023 como intento de dar forma al fruto de ese recorrido: <em>una guía amorosa, profunda y sabia en los conocimientos del alma</em>, compartiendo lo que a mí me permitió salir de lo más oscuro hacia lo más libre y creativo.</p>
+</section>
+
+<!-- PARA QUIEN -->
+<section class="para-quien">
+  <p class="sec-titulo" style="text-align:left;margin-bottom:0;">Para quién es este trabajo</p>
+  <ul>
+    <li>Para quien siente que la astrología popular no alcanza a nombrar lo que vive.</li>
+    <li>Para quien está en un momento de tránsito, real o interior, y quiere leerlo con mayor profundidad.</li>
+    <li>Para quien ha trabajado su psicología, su espiritualidad, su cuerpo, y quiere ver cómo todo eso se articula en un mapa.</li>
+    <li>Para quien está listo para encontrarse con su sombra sin dramatizarla.</li>
+    <li>Para quien intuye que su propósito existe, pero aún no tiene palabras para él.</li>
+    <li>Para quien ya conoce su carta natal y quiere leerla desde otro nivel de profundidad.</li>
+  </ul>
+</section>
+
+<!-- CTA -->
+<section class="cta-seccion">
+  <svg style="position:absolute;top:0;left:50%;transform:translateX(-50%);opacity:0.04;pointer-events:none;" width="340" height="340" viewBox="0 0 340 340">
+    <circle cx="170" cy="170" r="140" stroke="#3ab0d0" stroke-width="1" fill="none"/>
+    <line x1="30" y1="170" x2="310" y2="170" stroke="#3ab0d0" stroke-width="0.8"/>
+    <line x1="170" y1="30" x2="170" y2="310" stroke="#3ab0d0" stroke-width="0.8"/>
+    <circle cx="170" cy="170" r="6" stroke="#3ab0d0" stroke-width="1" fill="none"/>
+  </svg>
+  <h2 class="cta-titulo">La materia prima<br>ya está en vos.</h2>
+  <p class="cta-sub">La carta natal es el espejo. La lectura, la forma de limpiarlo.</p>
+  <a class="cta-boton" href="#">Reservar una sesión</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-marca">VOX ASTRA</p>
+  <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;color:var(--ceniza);margin-top:12px;text-transform:uppercase;">Astrología Esotérica</p>
+</footer>
+
+<script>
+(function(){
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [];
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function mkStars(){
+    stars = [];
+    const n = Math.floor((W * H) / 3000);
+    for(let i = 0; i < n; i++){
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.1 + 0.2,
+        a: Math.random(),
+        spd: Math.random() * 0.004 + 0.001,
+        phase: Math.random() * Math.PI * 2,
+        color: Math.random() > 0.7 ? '#3ab0d0' : '#b0c8e8'
+      });
+    }
+  }
+
+  function draw(t){
+    ctx.clearRect(0, 0, W, H);
+    for(let s of stars){
+      const alpha = s.a * (0.4 + 0.6 * Math.sin(t * s.spd + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = s.color;
+      ctx.globalAlpha = alpha;
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    // polvo: particulas muy pequenas
+    ctx.globalAlpha = 0.08;
+    for(let s of stars){
+      if(s.r < 0.5){
+        ctx.beginPath();
+        ctx.arc(s.x + Math.sin(t * 0.0003 + s.phase) * 2, s.y, s.r * 0.6, 0, Math.PI * 2);
+        ctx.fillStyle = '#3ab0d0';
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  mkStars();
+  window.addEventListener('resize', function(){ resize(); mkStars(); });
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
