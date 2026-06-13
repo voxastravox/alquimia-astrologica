@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — Vox Astra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500&family=Great+Vibes&family=Skranji:wght@400&display=swap" rel="stylesheet">
+<style>
+  nav { position:fixed; top:0; left:0; right:0; width:100%; z-index:100; height:64px; padding:0 48px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; background:rgba(10,26,31,0.92); backdrop-filter:blur(10px); border-bottom:1px solid rgba(23,95,114,0.3); box-sizing:border-box; }
+  .nav-marca { font-family:'Skranji',sans-serif; font-size:20px; letter-spacing:0.15em; color:#f0e6c8; text-decoration:none; flex-shrink:0; }
+  .nav-links { display:flex; flex-direction:row; gap:28px; list-style:none; align-items:center; margin:0; padding:0; }
+  .nav-links > li > a { font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:#a8c4c8; text-decoration:none; transition:color 0.3s; white-space:nowrap; display:flex; align-items:center; }
+  .nav-links > li > a:hover { color:#c4a44a; }
+  .nav-item-drop { position:relative; list-style:none; }
+  .nav-drop-trigger { font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:#a8c4c8; cursor:pointer; user-select:none; transition:color 0.3s; white-space:nowrap; display:flex; align-items:center; gap:4px; }
+  .nav-drop-trigger::after { content:'▾'; font-size:9px; opacity:0.6; }
+  .nav-item-drop.open .nav-drop-trigger { color:#c4a44a; }
+  .nav-dropdown { display:none; position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%); background:rgba(10,26,31,0.98); border:1px solid rgba(23,95,114,0.35); list-style:none; min-width:220px; padding:8px 0; z-index:200; }
+  .nav-item-drop.open .nav-dropdown { display:block; }
+  .nav-dropdown li a { display:block; padding:12px 22px; font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:#a8c4c8; text-decoration:none; white-space:nowrap; transition:color 0.2s; }
+  .nav-dropdown li a:hover { color:#c4a44a; background:rgba(23,95,114,0.12); }
+  .nav-hamburger { display:none; flex-direction:column; gap:6px; cursor:pointer; padding:8px; background:none; border:none; flex-shrink:0; }
+  .nav-hamburger span { display:block; width:26px; height:2px; background:#f0e6c8; border-radius:1px; }
+  .nav-mobile { display:none !important; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(10,26,31,0.97); z-index:150; flex-direction:column; align-items:center; justify-content:center; overflow-y:auto; }
+  .nav-mobile.open { display:flex !important; }
+  .nav-mobile-close { position:absolute; top:22px; right:28px; font-size:30px; color:#a8c4c8; cursor:pointer; background:none; border:none; line-height:1; }
+  .nav-mobile-main { font-family:'Cinzel',serif; font-size:14px; letter-spacing:0.3em; text-transform:uppercase; color:#a8c4c8; text-decoration:none; padding:14px 0; display:block; text-align:center; width:280px; border-bottom:1px solid rgba(30,143,168,0.12); transition:color 0.2s; }
+  .nav-mobile-main:hover { color:#c4a44a; }
+  .nav-mobile-header { font-family:'Cinzel',serif; font-size:14px; letter-spacing:0.3em; text-transform:uppercase; color:#a8c4c8; text-decoration:none; padding:14px 0 8px; display:block; text-align:center; width:280px; transition:color 0.2s; }
+  .nav-mobile-sub-link { font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:#d4e8e0; text-decoration:none; padding:8px 0; display:block; text-align:center; width:280px; border-bottom:1px solid rgba(30,143,168,0.06); transition:color 0.2s; }
+  .nav-mobile-sub-link:hover { color:#c4a44a; }
+  @media (max-width:600px) { nav { padding:0 20px; } .nav-links { display:none !important; } .nav-hamburger { display:flex !important; } }
+
+  :root {
+    --negro:   #0a1a1f;
+    --carbon:  #0e2228;
+    --acento:  #175f72;
+    --acento2: #1e8fa8;
+    --ceniza:  #6a9ca8;
+    --hueso:   #e8d9b8;
+    --crema:   #f0e6c8;
+    --oro:     #c4a44a;
+    --sal:     #a8c4c8;
+    --ig:      #e1306c;
+    --yt:      #c4372a;
+    --sub:     #f28a22;
+    --wa:      #25c26e;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--negro); color:var(--hueso); font-family:'Cormorant Garamond',Georgia,serif; font-weight:300; font-size:18px; line-height:1.75; overflow-x:hidden; }
+  #starfield { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  @media(max-width:800px){   } }
+
+
+  /* HERO */
+  .hero { min-height:55vh; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; text-align:center; padding:80px 48px 80px; position:relative; z-index:1; background:radial-gradient(ellipse at 50% 40%, #0e2228 0%, var(--negro) 70%); width:100%; box-sizing:border-box; }
+  .hero-eyebrow { font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.4em; color:var(--ceniza); text-transform:uppercase; display:block; margin-bottom:20px; text-align:center; width:100%; }
+  .hero-titulo { font-size:clamp(38px,7vw,80px); font-weight:300; color:var(--crema); line-height:1; margin-bottom:16px; text-align:center; width:100%; }
+  .hero-titulo em { font-style:italic; color:var(--acento2); }
+  .hero-sub { font-size:clamp(16px,1.9vw,20px); font-style:italic; color:var(--sal); max-width:520px; margin:0 auto; line-height:1.75; text-align:center; }
+
+  /* GRID DE CANALES */
+  .canales-wrapper {
+    position:relative; z-index:1;
+    max-width:900px; margin:0 auto;
+    padding:80px 24px 40px;
+  }
+  .canales-eyebrow {
+    font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.35em;
+    color:var(--sal); text-transform:uppercase;
+    text-align:center; display:block; margin-bottom:56px;
+  }
+  .canales-grid {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:3px;
+    margin-bottom:3px;
+  }
+
+  /* CARD BASE */
+  .canal-card {
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center;
+    padding:52px 40px;
+    text-decoration:none;
+    position:relative; overflow:hidden;
+    transition:transform 0.3s, box-shadow 0.3s;
+    background:linear-gradient(160deg,#0b1e26 0%,#0e2228 100%);
+  }
+  .canal-card:hover { transform:translateY(-3px); }
+
+  /* colores de borde neón por red */
+  .card-ig  { border:1px solid rgba(225,48,108,0.35); box-shadow:0 0 20px rgba(225,48,108,0.08) inset; }
+  .card-ig:hover  { box-shadow:0 0 32px rgba(225,48,108,0.2) inset, 0 0 40px rgba(225,48,108,0.1); border-color:rgba(225,48,108,0.7); }
+
+  .card-yt  { border:1px solid rgba(196,55,42,0.35); box-shadow:0 0 20px rgba(196,55,42,0.08) inset; }
+  .card-yt:hover  { box-shadow:0 0 32px rgba(196,55,42,0.2) inset, 0 0 40px rgba(196,55,42,0.1); border-color:rgba(196,55,42,0.7); }
+
+  .card-sub { border:1px solid rgba(242,138,34,0.35); box-shadow:0 0 20px rgba(242,138,34,0.08) inset; }
+  .card-sub:hover { box-shadow:0 0 32px rgba(242,138,34,0.2) inset, 0 0 40px rgba(242,138,34,0.1); border-color:rgba(242,138,34,0.7); }
+
+  .card-wa  { border:1px solid rgba(37,194,110,0.35); box-shadow:0 0 20px rgba(37,194,110,0.08) inset; }
+  .card-wa:hover  { box-shadow:0 0 32px rgba(37,194,110,0.2) inset, 0 0 40px rgba(37,194,110,0.1); border-color:rgba(37,194,110,0.7); }
+
+  .canal-icono {
+    width:64px; height:64px;
+    margin-bottom:24px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .canal-icono svg { width:100%; height:100%; }
+
+  .canal-red {
+    font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.3em;
+    text-transform:uppercase; margin-bottom:10px; display:block;
+  }
+  .canal-nombre {
+    font-size:clamp(18px,2.2vw,26px); font-weight:300;
+    color:var(--crema); line-height:1.2; margin-bottom:10px;
+  }
+  .canal-desc {
+    font-size:15px; font-style:italic;
+    color:var(--sal); line-height:1.65;
+    max-width:280px;
+  }
+
+  .ig-color  { color:var(--ig); }
+  .yt-color  { color:var(--yt); }
+  .sub-color { color:var(--sub); }
+  .wa-color  { color:var(--wa); }
+
+  /* MAIL */
+  .mail-bloque {
+    position:relative; z-index:1;
+    max-width:900px; margin:0 auto;
+    padding:0 24px 100px;
+  }
+  .mail-card {
+    background:linear-gradient(160deg,#0b1e26 0%,#0e2228 100%);
+    border:1px solid rgba(196,164,74,0.25);
+    box-shadow:0 0 20px rgba(196,164,74,0.06) inset;
+    padding:44px 48px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:32px; flex-wrap:wrap;
+    transition:box-shadow 0.3s, border-color 0.3s;
+  }
+  .mail-card:hover {
+    border-color:rgba(196,164,74,0.55);
+    box-shadow:0 0 32px rgba(196,164,74,0.12) inset;
+  }
+  .mail-izq { flex:1; }
+  .mail-eyebrow { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--ceniza); display:block; margin-bottom:10px; }
+  .mail-dir { font-size:clamp(18px,2.5vw,28px); font-weight:300; color:var(--crema); }
+  .mail-desc { font-style:italic; font-size:15px; color:var(--sal); margin-top:6px; }
+  .btn-mail {
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.3em;
+    text-transform:uppercase; color:var(--negro); background:var(--oro);
+    padding:15px 36px; text-decoration:none; transition:background 0.3s;
+    white-space:nowrap;
+  }
+  .btn-mail:hover { background:var(--crema); }
+
+  /* FOOTER */
+  footer { padding:48px 24px; text-align:center; border-top:1px solid rgba(30,143,168,0.15); position:relative; z-index:1; }
+  .footer-marca { font-family:'Skranji',sans-serif; font-size:18px; letter-spacing:0.2em; color:var(--sal); display:block; text-align:center; }
+
+  @media(max-width:600px){
+    .canales-grid { grid-template-columns:1fr; }
+    .mail-card { flex-direction:column; }
+  }
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  @media(max-width:800px){
+    
+    
+    
+  }
+
+
+  @media (max-width:600px) {
+    .hero { padding:100px 24px 60px; min-height:auto; }
+    .hero-titulo { font-size:clamp(28px,9vw,42px); text-align:center; }
+    .hero-sub { font-size:16px; text-align:center; padding:0 8px; }
+    .canales-wrapper { padding:48px 16px 24px; }
+    .canales-grid { grid-template-columns:1fr; }
+    .canal-card { padding:36px 24px; }
+    .mail-bloque { padding:0 16px 64px; }
+    .mail-card { flex-direction:column; padding:28px 20px; text-align:center; }
+    .btn-mail { width:100%; justify-content:center; }
+  }
+
+  @media (min-width: 601px) {
+    .nav-item-drop { padding-bottom: 0; }
+    .nav-dropdown { top: 100%; margin-top: 0; }
+    .nav-item-drop:hover .nav-dropdown { display:block; }
+    .nav-item-drop:hover .nav-drop-trigger { color:#c4a44a; }
+  }
+
+
+  @media (min-width: 601px) {
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 0; right: 0;
+      height: 10px;
+    }
+  }
+
+</style>
+</head>
+<body>
+<canvas id="starfield"></canvas>
+<nav>
+  <a href="index.html" class="nav-marca">VOX ASTRA</a>
+  <ul class="nav-links">
+    <li class="nav-item-drop">
+      <span class="nav-drop-trigger">Lecturas</span>
+      <ul class="nav-dropdown">
+        <li><a href="lecturas-carta-natal.html">Carta Natal</a></li>
+        <li><a href="carta-draconica.html">Carta Dracónica</a></li>
+        <li><a href="revolucion-solar.html">Revolución Solar</a></li>
+      </ul>
+    </li>
+    <li class="nav-item-drop">
+      <span class="nav-drop-trigger">Cursos</span>
+      <ul class="nav-dropdown">
+        <li><a href="remedios-planetarios.html">Remedios Planetarios</a></li>
+        <li><a href="astrologia-heroica.html">Astrología Heroica</a></li>
+        <li><a href="cuerpo-alambique.html">Cuerpo Alambique</a></li>
+      </ul>
+    </li>
+    <li><a href="terapia-astrologica.html">Terapia</a></li>
+    <li><a href="sobre-mi.html">Sobre mí</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">✕</button>
+  <a class="nav-mobile-header" href="lecturas-carta-natal.html">Lecturas</a>
+  <a class="nav-mobile-sub-link" href="lecturas-carta-natal.html">Carta Natal</a>
+  <a class="nav-mobile-sub-link" href="carta-draconica.html">Carta Dracónica</a>
+  <a class="nav-mobile-sub-link" href="revolucion-solar.html">Revolución Solar</a>
+  <a class="nav-mobile-header" href="cursos.html">Cursos</a>
+  <a class="nav-mobile-sub-link" href="remedios-planetarios.html">Remedios Planetarios</a>
+  <a class="nav-mobile-sub-link" href="astrologia-heroica.html">Astrología Heroica</a>
+  <a class="nav-mobile-sub-link" href="cuerpo-alambique.html">Cuerpo Alambique</a>
+  <a class="nav-mobile-main" href="terapia-astrologica.html">Terapia</a>
+  <a class="nav-mobile-main" href="sobre-mi.html">Sobre mí</a>
+  <a class="nav-mobile-main" href="contacto.html">Contacto</a>
+</div>
+
+<section class="hero">
+  <span class="hero-eyebrow" style="margin-top:80px;display:block;">Vox Astra · Contacto</span>
+  <h1 class="hero-titulo">Encontranos<br><em>en el éter</em></h1>
+  <p class="hero-sub">Seguí el trabajo, sumate a la comunidad, o escribí directamente. Cada canal tiene su propio ritmo y su propio lenguaje.</p>
+</section>
+
+<div class="canales-wrapper">
+  <span class="canales-eyebrow">Redes y comunidad</span>
+  <div class="canales-grid">
+
+    <!-- INSTAGRAM -->
+    <a class="canal-card card-ig" href="https://www.instagram.com/vox_astra" target="_blank" rel="noopener">
+      <div class="canal-icono">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="5" stroke="#e1306c" stroke-width="1.5" fill="none"/>
+          <circle cx="12" cy="12" r="4.5" stroke="#e1306c" stroke-width="1.5" fill="none"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="#e1306c"/>
+        </svg>
+      </div>
+      <span class="canal-red ig-color">Instagram</span>
+      <p class="canal-nombre">@vox_astra</p>
+      <p class="canal-desc">Contenido astrológico diario, reflexiones esotéricas y la voz viva del trabajo.</p>
+    </a>
+
+    <!-- YOUTUBE -->
+    <a class="canal-card card-yt" href="https://www.youtube.com/@VoxAstraAstrolog%C3%ADa" target="_blank" rel="noopener">
+      <div class="canal-icono">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="5" width="20" height="14" rx="4" stroke="#c4372a" stroke-width="1.5" fill="none"/>
+          <polygon points="10,8.5 16,12 10,15.5" fill="#c4372a"/>
+        </svg>
+      </div>
+      <span class="canal-red yt-color">YouTube</span>
+      <p class="canal-nombre">Vox Astra Astrología</p>
+      <p class="canal-desc">Clases, transits semanales, meditaciones y recorridos astrológicos en profundidad.</p>
+    </a>
+
+    <!-- SUBSTACK -->
+    <a class="canal-card card-sub" href="https://vozdelasestrellas.substack.com/" target="_blank" rel="noopener">
+      <div class="canal-icono">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="4" width="18" height="3" rx="1" fill="#f28a22"/>
+          <rect x="3" y="9.5" width="18" height="1.5" rx="0.5" fill="#f28a22" opacity="0.6"/>
+          <path d="M3,14 L12,21 L21,14 L21,21 L3,21 Z" fill="#f28a22" opacity="0.9"/>
+        </svg>
+      </div>
+      <span class="canal-red sub-color">Substack</span>
+      <p class="canal-nombre">Voz de las Estrellas</p>
+      <p class="canal-desc">Newsletter esotérico. Transits lunares, astroalquimia y cartas del alma, directo a tu correo.</p>
+    </a>
+
+    <!-- WHATSAPP -->
+    <a class="canal-card card-wa" href="https://wa.me/5491162013193?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Vox%20Astra" target="_blank" rel="noopener">
+      <div class="canal-icono">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#25c26e" d="M16 2C8.27 2 2 8.27 2 16c0 2.44.65 4.73 1.79 6.71L2 30l7.52-1.97A13.9 13.9 0 0016 30c7.73 0 14-6.27 14-14S23.73 2 16 2zm0 25.5c-2.18 0-4.22-.6-5.97-1.63l-.43-.25-4.46 1.17 1.19-4.34-.28-.45A11.46 11.46 0 014.5 16C4.5 9.6 9.6 4.5 16 4.5S27.5 9.6 27.5 16 22.4 27.5 16 27.5zm6.29-8.6c-.34-.17-2.03-1-2.34-1.12-.32-.11-.55-.17-.78.17-.23.34-.89 1.12-1.09 1.35-.2.23-.4.26-.74.09-.34-.17-1.44-.53-2.74-1.69-1.01-.9-1.7-2.01-1.9-2.35-.2-.34-.02-.52.15-.69.15-.15.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.03-.6-.09-.17-.78-1.88-1.07-2.57-.28-.67-.57-.58-.78-.59h-.67c-.23 0-.6.09-.91.43-.32.34-1.2 1.17-1.2 2.86s1.23 3.32 1.4 3.55c.17.23 2.42 3.7 5.87 5.19.82.35 1.46.56 1.96.72.82.26 1.57.22 2.16.13.66-.1 2.03-.83 2.32-1.63.29-.8.29-1.49.2-1.63-.08-.14-.31-.23-.65-.4z"/>
+        </svg>
+      </div>
+      <span class="canal-red wa-color">WhatsApp</span>
+      <p class="canal-nombre">Consultas directas</p>
+      <p class="canal-desc">Para reservar sesiones, consultar sobre cursos o simplemente hacer una pregunta.</p>
+    </a>
+
+  </div>
+</div>
+
+<!-- MAIL -->
+<div class="mail-bloque">
+  <div class="mail-card">
+    <div class="mail-izq">
+      <span class="mail-eyebrow">Correo electrónico</span>
+      <p class="mail-dir">voxastravox@gmail.com</p>
+      <p class="mail-desc">Para consultas más extensas, reprogramaciones o colaboraciones.</p>
+    </div>
+    <a class="btn-mail" href="mailto:voxastravox@gmail.com">Escribir un mail</a>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-marca">VOX ASTRA</p>
+  <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;color:var(--ceniza);margin-top:12px;text-transform:uppercase;text-align:center;">Astrología Esotérica</p>
+</footer>
+
+<script>
+(function(){
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [];
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  function mkStars(){
+    stars = [];
+    const n = Math.floor((W * H) / 3000);
+    for(let i = 0; i < n; i++){
+      stars.push({ x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.1+0.2,
+        a:Math.random(), spd:Math.random()*0.004+0.001, phase:Math.random()*Math.PI*2,
+        color:Math.random()>0.7?'#1e8fa8':'#e8d9b8' });
+    }
+  }
+  function draw(t){
+    ctx.clearRect(0,0,W,H);
+    for(let s of stars){
+      const alpha = s.a*(0.4+0.6*Math.sin(t*s.spd+s.phase));
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=s.color; ctx.globalAlpha=alpha; ctx.fill();
+    }
+    ctx.globalAlpha=1;
+    requestAnimationFrame(draw);
+  }
+  resize(); mkStars();
+  window.addEventListener('resize',function(){ resize(); mkStars(); });
+  requestAnimationFrame(draw);
+})();
+</script>
+
+<script>
+(function(){
+  // Dropdown nav
+  document.querySelectorAll('.nav-item-drop').forEach(function(item){
+    var trigger = item.querySelector('.nav-drop-trigger');
+    if(!trigger) return;
+    trigger.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = item.classList.contains('open');
+      // cerrar todos
+      document.querySelectorAll('.nav-item-drop').forEach(function(i){ i.classList.remove('open'); });
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+  // click fuera cierra
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.nav-item-drop').forEach(function(i){ i.classList.remove('open'); });
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('navMobile');
+  var close = document.getElementById('navClose');
+  if(btn && menu){
+    btn.addEventListener('click', function(){ menu.classList.add('open'); });
+    if(close) close.addEventListener('click', function(){ menu.classList.remove('open'); });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  }
+})();
+</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('navMobile');
+  var close = document.getElementById('navClose');
+  if(btn && menu){
+    btn.addEventListener('click', function(){ menu.classList.add('open'); });
+    if(close) close.addEventListener('click', function(){ menu.classList.remove('open'); });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  }
+  document.querySelectorAll('.nav-item-drop').forEach(function(item){
+    var trigger = item.querySelector('.nav-drop-trigger');
+    var dropdown = item.querySelector('.nav-dropdown');
+    if(!trigger) return;
+    trigger.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.nav-item-drop').forEach(function(i){ i.classList.remove('open'); });
+      if(!isOpen) item.classList.add('open');
+    });
+    if(dropdown) dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.nav-item-drop').forEach(function(i){ i.classList.remove('open'); });
+  });
+})();
+</script>
+</body>
+</html>
